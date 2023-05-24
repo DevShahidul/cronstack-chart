@@ -2,14 +2,14 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const Chart = ({data, title, columnGradient}) => {
+const Chart = ({data, title, type, gradient}) => {
   const labelStyle = {
     fontSize: '0.75rem',
     color: '#7D8FA9'
   }
     const options = {
       chart: {
-        type: 'column',
+        type: type,
         backgroundColor: '#1D232C',
         style: {
             color: '#EEF0F4'
@@ -36,7 +36,7 @@ const Chart = ({data, title, columnGradient}) => {
         labels: {
             style: labelStyle,
             padding: '8px'
-          }
+          },
       },
       yAxis: {
         title: {
@@ -55,10 +55,12 @@ const Chart = ({data, title, columnGradient}) => {
               const amount = this.value / 1000; // Divide by 1000 to get the value in thousands
               return amount + 'k';
             }
-          }
+          },
+          gridLineColor: '#3B4758', // Change the y-axis grid line color
       },
       series: [
         {
+          type: type,
           name: 'Amount',
           data: data.map(item => item.amt),
           // color: '#EF3CDD' single column color
@@ -74,8 +76,26 @@ const Chart = ({data, title, columnGradient}) => {
               x2: 0,
               y2: 1
             },
-            stops: columnGradient
+            stops: gradient
           }
+        },
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: gradient
+          },
+          linecap: 'round', // Set the line round styleZ
+          lineWidth: 3,
+          crisp:false,
+          stacking: 'normal',
+          // cropThreshold: 300, // 300 is default
+          // legendSymbol: 'rectangle',
+
         }
       },
       credits: {
