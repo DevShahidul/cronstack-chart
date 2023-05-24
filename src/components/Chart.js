@@ -2,7 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const Chart = ({data, title, type, gradient}) => {
+const Chart = ({data, type, gradient}) => {
   const labelStyle = {
     fontSize: '0.75rem',
     color: '#7D8FA9'
@@ -16,11 +16,11 @@ const Chart = ({data, title, type, gradient}) => {
         }
       },
       title: {
-        text: title,
+        text: "",
         align: 'left',
         style: {
             color: '#EEF0F4',
-            fontSize: '1rem'
+            fontSize: '1rem',
           }
       },
       xAxis: {
@@ -64,6 +64,14 @@ const Chart = ({data, title, type, gradient}) => {
           name: 'Amount',
           data: data.map(item => item.amt),
           // color: '#EF3CDD' single column color
+          marker: {
+            enabled: false,
+            states: {
+                hover: {
+                    enabled: false
+                }
+            }
+        }
         }
       ],
       plotOptions: { // gradient column colors option
@@ -91,8 +99,12 @@ const Chart = ({data, title, type, gradient}) => {
           },
           linecap: 'round', // Set the line round styleZ
           lineWidth: 3,
+          lineColor: '#B142F5',
           crisp:false,
           stacking: 'normal',
+          marker: {
+            enabled: false,
+          }
           // cropThreshold: 300, // 300 is default
           // legendSymbol: 'rectangle',
 
