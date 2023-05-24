@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import Chart from "./components/Chart";
+
 function App() {
+  const data1 = [
+    {"name": "Jan", "amt": 1400},
+    {"name": "Feb", "amt": 1506},
+    {"name": "March", "amt": 989},
+    {"name": "April", "amt": 1228},
+    {"name": "May", "amt": 1100},
+    {"name": "June", "amt": 1700}
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Chart 
+        data={data1} 
+        title="SESSIONS 1"
+        columnGradient={[
+          [0, "#EF3CDD"],    // Start color
+          [1, "#FF9B46"]     // End color
+        ]} 
+      />    
+      <Chart 
+        title="SESSIONS 1"
+        data={data1} 
+        columnGradient={[
+          [0, "#EF3CDD"],    // Start color
+          [1, "#FF9B46"]     // End color
+        ]} 
+      />  
     </div>
   );
 }
 
 export default App;
+
