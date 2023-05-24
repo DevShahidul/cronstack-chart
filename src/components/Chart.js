@@ -33,7 +33,9 @@ const Chart = ({data, type, gradient}) => {
             // fontSize: '0.75rem'
           }
         },
+        tickInterval: 1,
         labels: {
+            step: 1,
             style: labelStyle,
             padding: '8px'
           },
@@ -104,9 +106,16 @@ const Chart = ({data, type, gradient}) => {
           stacking: 'normal',
           marker: {
             enabled: false,
-          }
+          },
+          // threshold: null,
           // cropThreshold: 300, // 300 is default
           // legendSymbol: 'rectangle',
+          // min:0.5,
+          // max:10.5,
+          // tickInterval:1,
+          // maxPadding:0,
+          // endOnTick:false,
+          // startOnTick:false,
 
         }
       },
